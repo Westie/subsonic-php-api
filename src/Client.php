@@ -6,6 +6,7 @@ namespace OUTRAGElib\Subsonic;
 use \GuzzleHttp\Client as HttpClient;
 use \OUTRAGElib\Subsonic\Response\Binary as BinaryResponse;
 use \OUTRAGElib\Subsonic\Response\Json as JsonResponse;
+use \OUTRAGElib\Subsonic\Response\Mock as MockResponse;
 
 
 /**
@@ -65,7 +66,7 @@ class Client
 		$success = true;
 		
 		if($responseTarget === null)
-			return $success;
+			return new MockResponse($success);
 		elseif(in_array("binary", $responseTarget))
 			return new BinaryResponse($response);
 		else

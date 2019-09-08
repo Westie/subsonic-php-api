@@ -87,10 +87,10 @@ trait ClientRequestTrait
 	/**
 	 * Used to test connectivity with the server. Takes no extra parameters.
 	 */
-	public function ping($input)
+	public function ping($input = null)
 	{
 		if($input instanceof PingRequest === false)
-			$input = new PingRequest($input);
+			$input = new PingRequest($input ?? []);
 
 		return $input->execute($this)->getResults();
 	}
@@ -102,10 +102,10 @@ trait ClientRequestTrait
 	 * license (after a 30-day trial period). To get a license key you must
 	 * upgrade to Subsonic Premium.
 	 */
-	public function getLicense($input)
+	public function getLicense($input = null)
 	{
 		if($input instanceof GetLicenseRequest === false)
-			$input = new GetLicenseRequest($input);
+			$input = new GetLicenseRequest($input ?? []);
 
 		return $input->execute($this)->getResults();
 	}
@@ -114,10 +114,10 @@ trait ClientRequestTrait
 	/**
 	 * Returns all configured top-level music folders. Takes no extra parameters.
 	 */
-	public function getMusicFolders($input)
+	public function getMusicFolders($input = null)
 	{
 		if($input instanceof GetMusicFoldersRequest === false)
-			$input = new GetMusicFoldersRequest($input);
+			$input = new GetMusicFoldersRequest($input ?? []);
 
 		return $input->execute($this)->getResults();
 	}
@@ -126,10 +126,10 @@ trait ClientRequestTrait
 	/**
 	 * Returns an indexed structure of all artists.
 	 */
-	public function getIndexes($input)
+	public function getIndexes($input = null)
 	{
 		if($input instanceof GetIndexesRequest === false)
-			$input = new GetIndexesRequest($input);
+			$input = new GetIndexesRequest($input ?? []);
 
 		return $input->execute($this)->getResults();
 	}
@@ -139,10 +139,10 @@ trait ClientRequestTrait
 	 * Returns a listing of all files in a music directory. Typically used to get
 	 * list of albums for an artist, or list of songs for an album.
 	 */
-	public function getMusicDirectory($input)
+	public function getMusicDirectory($input = null)
 	{
 		if($input instanceof GetMusicDirectoryRequest === false)
-			$input = new GetMusicDirectoryRequest($input);
+			$input = new GetMusicDirectoryRequest($input ?? []);
 
 		return $input->execute($this)->getResults();
 	}
@@ -151,10 +151,10 @@ trait ClientRequestTrait
 	/**
 	 * Returns all genres.
 	 */
-	public function getGenres($input)
+	public function getGenres($input = null)
 	{
 		if($input instanceof GetGenresRequest === false)
-			$input = new GetGenresRequest($input);
+			$input = new GetGenresRequest($input ?? []);
 
 		return $input->execute($this)->getResults();
 	}
@@ -163,10 +163,10 @@ trait ClientRequestTrait
 	/**
 	 * Similar to getIndexes, but organizes music according to ID3 tags.
 	 */
-	public function getArtists($input)
+	public function getArtists($input = null)
 	{
 		if($input instanceof GetArtistsRequest === false)
-			$input = new GetArtistsRequest($input);
+			$input = new GetArtistsRequest($input ?? []);
 
 		return $input->execute($this)->getResults();
 	}
@@ -176,10 +176,10 @@ trait ClientRequestTrait
 	 * Returns details for an artist, including a list of albums. This method
 	 * organizes music according to ID3 tags.
 	 */
-	public function getArtist($input)
+	public function getArtist($input = null)
 	{
 		if($input instanceof GetArtistRequest === false)
-			$input = new GetArtistRequest($input);
+			$input = new GetArtistRequest($input ?? []);
 
 		return $input->execute($this)->getResults();
 	}
@@ -189,10 +189,10 @@ trait ClientRequestTrait
 	 * Returns details for an album, including a list of songs. This method
 	 * organizes music according to ID3 tags.
 	 */
-	public function getAlbum($input)
+	public function getAlbum($input = null)
 	{
 		if($input instanceof GetAlbumRequest === false)
-			$input = new GetAlbumRequest($input);
+			$input = new GetAlbumRequest($input ?? []);
 
 		return $input->execute($this)->getResults();
 	}
@@ -201,10 +201,10 @@ trait ClientRequestTrait
 	/**
 	 * Returns details for a song.
 	 */
-	public function getSong($input)
+	public function getSong($input = null)
 	{
 		if($input instanceof GetSongRequest === false)
-			$input = new GetSongRequest($input);
+			$input = new GetSongRequest($input ?? []);
 
 		return $input->execute($this)->getResults();
 	}
@@ -213,10 +213,10 @@ trait ClientRequestTrait
 	/**
 	 * Returns all video files.
 	 */
-	public function getVideos($input)
+	public function getVideos($input = null)
 	{
 		if($input instanceof GetVideosRequest === false)
-			$input = new GetVideosRequest($input);
+			$input = new GetVideosRequest($input ?? []);
 
 		return $input->execute($this)->getResults();
 	}
@@ -226,10 +226,10 @@ trait ClientRequestTrait
 	 * Returns details for a video, including information about available audio
 	 * tracks, subtitles (captions) and conversions.
 	 */
-	public function getVideoInfo($input)
+	public function getVideoInfo($input = null)
 	{
 		if($input instanceof GetVideoInfoRequest === false)
-			$input = new GetVideoInfoRequest($input);
+			$input = new GetVideoInfoRequest($input ?? []);
 
 		return $input->execute($this)->getResults();
 	}
@@ -239,10 +239,10 @@ trait ClientRequestTrait
 	 * Returns artist info with biography, image URLs and similar artists, using
 	 * data from last.fm.
 	 */
-	public function getArtistInfo($input)
+	public function getArtistInfo($input = null)
 	{
 		if($input instanceof GetArtistInfoRequest === false)
-			$input = new GetArtistInfoRequest($input);
+			$input = new GetArtistInfoRequest($input ?? []);
 
 		return $input->execute($this)->getResults();
 	}
@@ -251,10 +251,10 @@ trait ClientRequestTrait
 	/**
 	 * Similar to getArtistInfo, but organizes music according to ID3 tags.
 	 */
-	public function getArtistInfo2($input)
+	public function getArtistInfo2($input = null)
 	{
 		if($input instanceof GetArtistInfo2Request === false)
-			$input = new GetArtistInfo2Request($input);
+			$input = new GetArtistInfo2Request($input ?? []);
 
 		return $input->execute($this)->getResults();
 	}
@@ -263,10 +263,10 @@ trait ClientRequestTrait
 	/**
 	 * Returns album notes, image URLs etc, using data from last.fm.
 	 */
-	public function getAlbumInfo($input)
+	public function getAlbumInfo($input = null)
 	{
 		if($input instanceof GetAlbumInfoRequest === false)
-			$input = new GetAlbumInfoRequest($input);
+			$input = new GetAlbumInfoRequest($input ?? []);
 
 		return $input->execute($this)->getResults();
 	}
@@ -275,10 +275,10 @@ trait ClientRequestTrait
 	/**
 	 * Similar to getAlbumInfo, but organizes music according to ID3 tags.
 	 */
-	public function getAlbumInfo2($input)
+	public function getAlbumInfo2($input = null)
 	{
 		if($input instanceof GetAlbumInfo2Request === false)
-			$input = new GetAlbumInfo2Request($input);
+			$input = new GetAlbumInfo2Request($input ?? []);
 
 		return $input->execute($this)->getResults();
 	}
@@ -288,10 +288,10 @@ trait ClientRequestTrait
 	 * Returns a random collection of songs from the given artist and similar
 	 * artists, using data from last.fm. Typically used for artist radio features.
 	 */
-	public function getSimilarSongs($input)
+	public function getSimilarSongs($input = null)
 	{
 		if($input instanceof GetSimilarSongsRequest === false)
-			$input = new GetSimilarSongsRequest($input);
+			$input = new GetSimilarSongsRequest($input ?? []);
 
 		return $input->execute($this)->getResults();
 	}
@@ -300,10 +300,10 @@ trait ClientRequestTrait
 	/**
 	 * Similar to getSimilarSongs, but organizes music according to ID3 tags.
 	 */
-	public function getSimilarSongs2($input)
+	public function getSimilarSongs2($input = null)
 	{
 		if($input instanceof GetSimilarSongs2Request === false)
-			$input = new GetSimilarSongs2Request($input);
+			$input = new GetSimilarSongs2Request($input ?? []);
 
 		return $input->execute($this)->getResults();
 	}
@@ -312,10 +312,10 @@ trait ClientRequestTrait
 	/**
 	 * Returns top songs for the given artist, using data from last.fm.
 	 */
-	public function getTopSongs($input)
+	public function getTopSongs($input = null)
 	{
 		if($input instanceof GetTopSongsRequest === false)
-			$input = new GetTopSongsRequest($input);
+			$input = new GetTopSongsRequest($input ?? []);
 
 		return $input->execute($this)->getResults();
 	}
@@ -325,10 +325,10 @@ trait ClientRequestTrait
 	 * Returns a list of random, newest, highest rated etc. albums. Similar to the
 	 * album lists on the home page of the Subsonic web interface.
 	 */
-	public function getAlbumList($input)
+	public function getAlbumList($input = null)
 	{
 		if($input instanceof GetAlbumListRequest === false)
-			$input = new GetAlbumListRequest($input);
+			$input = new GetAlbumListRequest($input ?? []);
 
 		return $input->execute($this)->getResults();
 	}
@@ -337,10 +337,10 @@ trait ClientRequestTrait
 	/**
 	 * Similar to getAlbumList, but organizes music according to ID3 tags.
 	 */
-	public function getAlbumList2($input)
+	public function getAlbumList2($input = null)
 	{
 		if($input instanceof GetAlbumList2Request === false)
-			$input = new GetAlbumList2Request($input);
+			$input = new GetAlbumList2Request($input ?? []);
 
 		return $input->execute($this)->getResults();
 	}
@@ -349,10 +349,10 @@ trait ClientRequestTrait
 	/**
 	 * Returns random songs matching the given criteria.
 	 */
-	public function getRandomSongs($input)
+	public function getRandomSongs($input = null)
 	{
 		if($input instanceof GetRandomSongsRequest === false)
-			$input = new GetRandomSongsRequest($input);
+			$input = new GetRandomSongsRequest($input ?? []);
 
 		return $input->execute($this)->getResults();
 	}
@@ -361,10 +361,10 @@ trait ClientRequestTrait
 	/**
 	 * Returns songs in a given genre.
 	 */
-	public function getSongsByGenre($input)
+	public function getSongsByGenre($input = null)
 	{
 		if($input instanceof GetSongsByGenreRequest === false)
-			$input = new GetSongsByGenreRequest($input);
+			$input = new GetSongsByGenreRequest($input ?? []);
 
 		return $input->execute($this)->getResults();
 	}
@@ -374,10 +374,10 @@ trait ClientRequestTrait
 	 * Returns what is currently being played by all users. Takes no extra
 	 * parameters.
 	 */
-	public function getNowPlaying($input)
+	public function getNowPlaying($input = null)
 	{
 		if($input instanceof GetNowPlayingRequest === false)
-			$input = new GetNowPlayingRequest($input);
+			$input = new GetNowPlayingRequest($input ?? []);
 
 		return $input->execute($this)->getResults();
 	}
@@ -386,10 +386,10 @@ trait ClientRequestTrait
 	/**
 	 * Returns starred songs, albums and artists.
 	 */
-	public function getStarred($input)
+	public function getStarred($input = null)
 	{
 		if($input instanceof GetStarredRequest === false)
-			$input = new GetStarredRequest($input);
+			$input = new GetStarredRequest($input ?? []);
 
 		return $input->execute($this)->getResults();
 	}
@@ -398,10 +398,10 @@ trait ClientRequestTrait
 	/**
 	 * Similar to getStarred, but organizes music according to ID3 tags.
 	 */
-	public function getStarred2($input)
+	public function getStarred2($input = null)
 	{
 		if($input instanceof GetStarred2Request === false)
-			$input = new GetStarred2Request($input);
+			$input = new GetStarred2Request($input ?? []);
 
 		return $input->execute($this)->getResults();
 	}
@@ -411,10 +411,10 @@ trait ClientRequestTrait
 	 * Returns a listing of files matching the given search criteria. Supports
 	 * paging through the result.
 	 */
-	public function search($input)
+	public function search($input = null)
 	{
 		if($input instanceof SearchRequest === false)
-			$input = new SearchRequest($input);
+			$input = new SearchRequest($input ?? []);
 
 		return $input->execute($this)->getResults();
 	}
@@ -424,10 +424,10 @@ trait ClientRequestTrait
 	 * Returns albums, artists and songs matching the given search criteria.
 	 * Supports paging through the result.
 	 */
-	public function search2($input)
+	public function search2($input = null)
 	{
 		if($input instanceof Search2Request === false)
-			$input = new Search2Request($input);
+			$input = new Search2Request($input ?? []);
 
 		return $input->execute($this)->getResults();
 	}
@@ -436,10 +436,10 @@ trait ClientRequestTrait
 	/**
 	 * Similar to search2, but organizes music according to ID3 tags.
 	 */
-	public function search3($input)
+	public function search3($input = null)
 	{
 		if($input instanceof Search3Request === false)
-			$input = new Search3Request($input);
+			$input = new Search3Request($input ?? []);
 
 		return $input->execute($this)->getResults();
 	}
@@ -448,10 +448,10 @@ trait ClientRequestTrait
 	/**
 	 * Returns all playlists a user is allowed to play.
 	 */
-	public function getPlaylists($input)
+	public function getPlaylists($input = null)
 	{
 		if($input instanceof GetPlaylistsRequest === false)
-			$input = new GetPlaylistsRequest($input);
+			$input = new GetPlaylistsRequest($input ?? []);
 
 		return $input->execute($this)->getResults();
 	}
@@ -460,10 +460,10 @@ trait ClientRequestTrait
 	/**
 	 * Returns a listing of files in a saved playlist.
 	 */
-	public function getPlaylist($input)
+	public function getPlaylist($input = null)
 	{
 		if($input instanceof GetPlaylistRequest === false)
-			$input = new GetPlaylistRequest($input);
+			$input = new GetPlaylistRequest($input ?? []);
 
 		return $input->execute($this)->getResults();
 	}
@@ -472,10 +472,10 @@ trait ClientRequestTrait
 	/**
 	 * Creates (or updates) a playlist.
 	 */
-	public function createPlaylist($input)
+	public function createPlaylist($input = null)
 	{
 		if($input instanceof CreatePlaylistRequest === false)
-			$input = new CreatePlaylistRequest($input);
+			$input = new CreatePlaylistRequest($input ?? []);
 
 		return $input->execute($this)->getResults();
 	}
@@ -484,10 +484,10 @@ trait ClientRequestTrait
 	/**
 	 * Updates a playlist. Only the owner of a playlist is allowed to update it.
 	 */
-	public function updatePlaylist($input)
+	public function updatePlaylist($input = null)
 	{
 		if($input instanceof UpdatePlaylistRequest === false)
-			$input = new UpdatePlaylistRequest($input);
+			$input = new UpdatePlaylistRequest($input ?? []);
 
 		return $input->execute($this)->getResults();
 	}
@@ -496,10 +496,10 @@ trait ClientRequestTrait
 	/**
 	 * Deletes a saved playlist.
 	 */
-	public function deletePlaylist($input)
+	public function deletePlaylist($input = null)
 	{
 		if($input instanceof DeletePlaylistRequest === false)
-			$input = new DeletePlaylistRequest($input);
+			$input = new DeletePlaylistRequest($input ?? []);
 
 		return $input->execute($this)->getResults();
 	}
@@ -508,10 +508,10 @@ trait ClientRequestTrait
 	/**
 	 * Streams a given media file.
 	 */
-	public function stream($input)
+	public function stream($input = null)
 	{
 		if($input instanceof StreamRequest === false)
-			$input = new StreamRequest($input);
+			$input = new StreamRequest($input ?? []);
 
 		return $input->execute($this)->getResults();
 	}
@@ -521,10 +521,10 @@ trait ClientRequestTrait
 	 * Downloads a given media file. Similar to stream, but this method returns
 	 * the original media data without transcoding or downsampling.
 	 */
-	public function download($input)
+	public function download($input = null)
 	{
 		if($input instanceof DownloadRequest === false)
-			$input = new DownloadRequest($input);
+			$input = new DownloadRequest($input ?? []);
 
 		return $input->execute($this)->getResults();
 	}
@@ -537,10 +537,10 @@ trait ClientRequestTrait
 	 * downloads. It's supported by iOS and newer versions of Android. This method
 	 * also supports adaptive bitrate streaming, see the bitRate parameter.
 	 */
-	public function hls($input)
+	public function hls($input = null)
 	{
 		if($input instanceof HlsRequest === false)
-			$input = new HlsRequest($input);
+			$input = new HlsRequest($input ?? []);
 
 		return $input->execute($this)->getResults();
 	}
@@ -550,10 +550,10 @@ trait ClientRequestTrait
 	 * Returns captions (subtitles) for a video. Use getVideoInfo to get a list of
 	 * available captions.
 	 */
-	public function getCaptions($input)
+	public function getCaptions($input = null)
 	{
 		if($input instanceof GetCaptionsRequest === false)
-			$input = new GetCaptionsRequest($input);
+			$input = new GetCaptionsRequest($input ?? []);
 
 		return $input->execute($this)->getResults();
 	}
@@ -562,10 +562,10 @@ trait ClientRequestTrait
 	/**
 	 * Returns a cover art image.
 	 */
-	public function getCoverArt($input)
+	public function getCoverArt($input = null)
 	{
 		if($input instanceof GetCoverArtRequest === false)
-			$input = new GetCoverArtRequest($input);
+			$input = new GetCoverArtRequest($input ?? []);
 
 		return $input->execute($this)->getResults();
 	}
@@ -574,10 +574,10 @@ trait ClientRequestTrait
 	/**
 	 * Searches for and returns lyrics for a given song.
 	 */
-	public function getLyrics($input)
+	public function getLyrics($input = null)
 	{
 		if($input instanceof GetLyricsRequest === false)
-			$input = new GetLyricsRequest($input);
+			$input = new GetLyricsRequest($input ?? []);
 
 		return $input->execute($this)->getResults();
 	}
@@ -586,10 +586,10 @@ trait ClientRequestTrait
 	/**
 	 * Returns the avatar (personal image) for a user.
 	 */
-	public function getAvatar($input)
+	public function getAvatar($input = null)
 	{
 		if($input instanceof GetAvatarRequest === false)
-			$input = new GetAvatarRequest($input);
+			$input = new GetAvatarRequest($input ?? []);
 
 		return $input->execute($this)->getResults();
 	}
@@ -598,10 +598,10 @@ trait ClientRequestTrait
 	/**
 	 * Attaches a star to a song, album or artist.
 	 */
-	public function star($input)
+	public function star($input = null)
 	{
 		if($input instanceof StarRequest === false)
-			$input = new StarRequest($input);
+			$input = new StarRequest($input ?? []);
 
 		return $input->execute($this)->getResults();
 	}
@@ -610,10 +610,10 @@ trait ClientRequestTrait
 	/**
 	 * Removes the star from a song, album or artist.
 	 */
-	public function unstar($input)
+	public function unstar($input = null)
 	{
 		if($input instanceof UnstarRequest === false)
-			$input = new UnstarRequest($input);
+			$input = new UnstarRequest($input ?? []);
 
 		return $input->execute($this)->getResults();
 	}
@@ -622,10 +622,10 @@ trait ClientRequestTrait
 	/**
 	 * Sets the rating for a music file.
 	 */
-	public function setRating($input)
+	public function setRating($input = null)
 	{
 		if($input instanceof SetRatingRequest === false)
-			$input = new SetRatingRequest($input);
+			$input = new SetRatingRequest($input ?? []);
 
 		return $input->execute($this)->getResults();
 	}
@@ -636,10 +636,10 @@ trait ClientRequestTrait
 	 * when playing media that is cached on the client. This operation includes
 	 * the following:
 	 */
-	public function scrobble($input)
+	public function scrobble($input = null)
 	{
 		if($input instanceof ScrobbleRequest === false)
-			$input = new ScrobbleRequest($input);
+			$input = new ScrobbleRequest($input ?? []);
 
 		return $input->execute($this)->getResults();
 	}
@@ -649,10 +649,10 @@ trait ClientRequestTrait
 	 * Returns information about shared media this user is allowed to manage.
 	 * Takes no extra parameters.
 	 */
-	public function getShares($input)
+	public function getShares($input = null)
 	{
 		if($input instanceof GetSharesRequest === false)
-			$input = new GetSharesRequest($input);
+			$input = new GetSharesRequest($input ?? []);
 
 		return $input->execute($this)->getResults();
 	}
@@ -664,10 +664,10 @@ trait ClientRequestTrait
 	 * Facebook, Twitter etc. Note: The user must be authorized to share (see
 	 * Settings > Users > User is allowed to share files with anyone).
 	 */
-	public function createShare($input)
+	public function createShare($input = null)
 	{
 		if($input instanceof CreateShareRequest === false)
-			$input = new CreateShareRequest($input);
+			$input = new CreateShareRequest($input ?? []);
 
 		return $input->execute($this)->getResults();
 	}
@@ -676,10 +676,10 @@ trait ClientRequestTrait
 	/**
 	 * Updates the description and/or expiration date for an existing share.
 	 */
-	public function updateShare($input)
+	public function updateShare($input = null)
 	{
 		if($input instanceof UpdateShareRequest === false)
-			$input = new UpdateShareRequest($input);
+			$input = new UpdateShareRequest($input ?? []);
 
 		return $input->execute($this)->getResults();
 	}
@@ -688,10 +688,10 @@ trait ClientRequestTrait
 	/**
 	 * Deletes an existing share.
 	 */
-	public function deleteShare($input)
+	public function deleteShare($input = null)
 	{
 		if($input instanceof DeleteShareRequest === false)
-			$input = new DeleteShareRequest($input);
+			$input = new DeleteShareRequest($input ?? []);
 
 		return $input->execute($this)->getResults();
 	}
@@ -704,10 +704,10 @@ trait ClientRequestTrait
 	 * would be to first retrieve all channels without episodes, and then retrieve
 	 * all episodes for the single channel the user selects.
 	 */
-	public function getPodcasts($input)
+	public function getPodcasts($input = null)
 	{
 		if($input instanceof GetPodcastsRequest === false)
-			$input = new GetPodcastsRequest($input);
+			$input = new GetPodcastsRequest($input ?? []);
 
 		return $input->execute($this)->getResults();
 	}
@@ -716,10 +716,10 @@ trait ClientRequestTrait
 	/**
 	 * Returns the most recently published Podcast episodes.
 	 */
-	public function getNewestPodcasts($input)
+	public function getNewestPodcasts($input = null)
 	{
 		if($input instanceof GetNewestPodcastsRequest === false)
-			$input = new GetNewestPodcastsRequest($input);
+			$input = new GetNewestPodcastsRequest($input ?? []);
 
 		return $input->execute($this)->getResults();
 	}
@@ -730,10 +730,10 @@ trait ClientRequestTrait
 	 * be authorized for Podcast administration (see Settings > Users > User is
 	 * allowed to administrate Podcasts).
 	 */
-	public function refreshPodcasts($input)
+	public function refreshPodcasts($input = null)
 	{
 		if($input instanceof RefreshPodcastsRequest === false)
-			$input = new RefreshPodcastsRequest($input);
+			$input = new RefreshPodcastsRequest($input ?? []);
 
 		return $input->execute($this)->getResults();
 	}
@@ -744,10 +744,10 @@ trait ClientRequestTrait
 	 * administration (see Settings > Users > User is allowed to administrate
 	 * Podcasts).
 	 */
-	public function createPodcastChannel($input)
+	public function createPodcastChannel($input = null)
 	{
 		if($input instanceof CreatePodcastChannelRequest === false)
-			$input = new CreatePodcastChannelRequest($input);
+			$input = new CreatePodcastChannelRequest($input ?? []);
 
 		return $input->execute($this)->getResults();
 	}
@@ -758,10 +758,10 @@ trait ClientRequestTrait
 	 * administration (see Settings > Users > User is allowed to administrate
 	 * Podcasts).
 	 */
-	public function deletePodcastChannel($input)
+	public function deletePodcastChannel($input = null)
 	{
 		if($input instanceof DeletePodcastChannelRequest === false)
-			$input = new DeletePodcastChannelRequest($input);
+			$input = new DeletePodcastChannelRequest($input ?? []);
 
 		return $input->execute($this)->getResults();
 	}
@@ -772,10 +772,10 @@ trait ClientRequestTrait
 	 * administration (see Settings > Users > User is allowed to administrate
 	 * Podcasts).
 	 */
-	public function deletePodcastEpisode($input)
+	public function deletePodcastEpisode($input = null)
 	{
 		if($input instanceof DeletePodcastEpisodeRequest === false)
-			$input = new DeletePodcastEpisodeRequest($input);
+			$input = new DeletePodcastEpisodeRequest($input ?? []);
 
 		return $input->execute($this)->getResults();
 	}
@@ -786,10 +786,10 @@ trait ClientRequestTrait
 	 * user must be authorized for Podcast administration (see Settings > Users >
 	 * User is allowed to administrate Podcasts).
 	 */
-	public function downloadPodcastEpisode($input)
+	public function downloadPodcastEpisode($input = null)
 	{
 		if($input instanceof DownloadPodcastEpisodeRequest === false)
-			$input = new DownloadPodcastEpisodeRequest($input);
+			$input = new DownloadPodcastEpisodeRequest($input ?? []);
 
 		return $input->execute($this)->getResults();
 	}
@@ -800,10 +800,10 @@ trait ClientRequestTrait
 	 * hardware. Note: The user must be authorized to control the jukebox (see
 	 * Settings > Users > User is allowed to play files in jukebox mode).
 	 */
-	public function jukeboxControl($input)
+	public function jukeboxControl($input = null)
 	{
 		if($input instanceof JukeboxControlRequest === false)
-			$input = new JukeboxControlRequest($input);
+			$input = new JukeboxControlRequest($input ?? []);
 
 		return $input->execute($this)->getResults();
 	}
@@ -812,10 +812,10 @@ trait ClientRequestTrait
 	/**
 	 * Returns all internet radio stations. Takes no extra parameters.
 	 */
-	public function getInternetRadioStations($input)
+	public function getInternetRadioStations($input = null)
 	{
 		if($input instanceof GetInternetRadioStationsRequest === false)
-			$input = new GetInternetRadioStationsRequest($input);
+			$input = new GetInternetRadioStationsRequest($input ?? []);
 
 		return $input->execute($this)->getResults();
 	}
@@ -825,10 +825,10 @@ trait ClientRequestTrait
 	 * Adds a new internet radio station. Only users with admin privileges are
 	 * allowed to call this method.
 	 */
-	public function createInternetRadioStation($input)
+	public function createInternetRadioStation($input = null)
 	{
 		if($input instanceof CreateInternetRadioStationRequest === false)
-			$input = new CreateInternetRadioStationRequest($input);
+			$input = new CreateInternetRadioStationRequest($input ?? []);
 
 		return $input->execute($this)->getResults();
 	}
@@ -838,10 +838,10 @@ trait ClientRequestTrait
 	 * Updates an existing internet radio station. Only users with admin
 	 * privileges are allowed to call this method.
 	 */
-	public function updateInternetRadioStation($input)
+	public function updateInternetRadioStation($input = null)
 	{
 		if($input instanceof UpdateInternetRadioStationRequest === false)
-			$input = new UpdateInternetRadioStationRequest($input);
+			$input = new UpdateInternetRadioStationRequest($input ?? []);
 
 		return $input->execute($this)->getResults();
 	}
@@ -851,10 +851,10 @@ trait ClientRequestTrait
 	 * Deletes an existing internet radio station. Only users with admin
 	 * privileges are allowed to call this method.
 	 */
-	public function deleteInternetRadioStation($input)
+	public function deleteInternetRadioStation($input = null)
 	{
 		if($input instanceof DeleteInternetRadioStationRequest === false)
-			$input = new DeleteInternetRadioStationRequest($input);
+			$input = new DeleteInternetRadioStationRequest($input ?? []);
 
 		return $input->execute($this)->getResults();
 	}
@@ -863,10 +863,10 @@ trait ClientRequestTrait
 	/**
 	 * Returns the current visible (non-expired) chat messages.
 	 */
-	public function getChatMessages($input)
+	public function getChatMessages($input = null)
 	{
 		if($input instanceof GetChatMessagesRequest === false)
-			$input = new GetChatMessagesRequest($input);
+			$input = new GetChatMessagesRequest($input ?? []);
 
 		return $input->execute($this)->getResults();
 	}
@@ -875,10 +875,10 @@ trait ClientRequestTrait
 	/**
 	 * Adds a message to the chat log.
 	 */
-	public function addChatMessage($input)
+	public function addChatMessage($input = null)
 	{
 		if($input instanceof AddChatMessageRequest === false)
-			$input = new AddChatMessageRequest($input);
+			$input = new AddChatMessageRequest($input ?? []);
 
 		return $input->execute($this)->getResults();
 	}
@@ -889,10 +889,10 @@ trait ClientRequestTrait
 	 * folder access it has. Can be used to enable/disable certain features in the
 	 * client, such as jukebox control.
 	 */
-	public function getUser($input)
+	public function getUser($input = null)
 	{
 		if($input instanceof GetUserRequest === false)
-			$input = new GetUserRequest($input);
+			$input = new GetUserRequest($input ?? []);
 
 		return $input->execute($this)->getResults();
 	}
@@ -903,10 +903,10 @@ trait ClientRequestTrait
 	 * access they have. Only users with admin privileges are allowed to call this
 	 * method.
 	 */
-	public function getUsers($input)
+	public function getUsers($input = null)
 	{
 		if($input instanceof GetUsersRequest === false)
-			$input = new GetUsersRequest($input);
+			$input = new GetUsersRequest($input ?? []);
 
 		return $input->execute($this)->getResults();
 	}
@@ -915,10 +915,10 @@ trait ClientRequestTrait
 	/**
 	 * Creates a new Subsonic user, using the following parameters:
 	 */
-	public function createUser($input)
+	public function createUser($input = null)
 	{
 		if($input instanceof CreateUserRequest === false)
-			$input = new CreateUserRequest($input);
+			$input = new CreateUserRequest($input ?? []);
 
 		return $input->execute($this)->getResults();
 	}
@@ -927,10 +927,10 @@ trait ClientRequestTrait
 	/**
 	 * Modifies an existing Subsonic user, using the following parameters:
 	 */
-	public function updateUser($input)
+	public function updateUser($input = null)
 	{
 		if($input instanceof UpdateUserRequest === false)
-			$input = new UpdateUserRequest($input);
+			$input = new UpdateUserRequest($input ?? []);
 
 		return $input->execute($this)->getResults();
 	}
@@ -939,10 +939,10 @@ trait ClientRequestTrait
 	/**
 	 * Deletes an existing Subsonic user, using the following parameters:
 	 */
-	public function deleteUser($input)
+	public function deleteUser($input = null)
 	{
 		if($input instanceof DeleteUserRequest === false)
-			$input = new DeleteUserRequest($input);
+			$input = new DeleteUserRequest($input ?? []);
 
 		return $input->execute($this)->getResults();
 	}
@@ -953,10 +953,10 @@ trait ClientRequestTrait
 	 * parameters. You can only change your own password unless you have admin
 	 * privileges.
 	 */
-	public function changePassword($input)
+	public function changePassword($input = null)
 	{
 		if($input instanceof ChangePasswordRequest === false)
-			$input = new ChangePasswordRequest($input);
+			$input = new ChangePasswordRequest($input ?? []);
 
 		return $input->execute($this)->getResults();
 	}
@@ -966,10 +966,10 @@ trait ClientRequestTrait
 	 * Returns all bookmarks for this user. A bookmark is a position within a
 	 * certain media file.
 	 */
-	public function getBookmarks($input)
+	public function getBookmarks($input = null)
 	{
 		if($input instanceof GetBookmarksRequest === false)
-			$input = new GetBookmarksRequest($input);
+			$input = new GetBookmarksRequest($input ?? []);
 
 		return $input->execute($this)->getResults();
 	}
@@ -979,10 +979,10 @@ trait ClientRequestTrait
 	 * Creates or updates a bookmark (a position within a media file). Bookmarks
 	 * are personal and not visible to other users.
 	 */
-	public function createBookmark($input)
+	public function createBookmark($input = null)
 	{
 		if($input instanceof CreateBookmarkRequest === false)
-			$input = new CreateBookmarkRequest($input);
+			$input = new CreateBookmarkRequest($input ?? []);
 
 		return $input->execute($this)->getResults();
 	}
@@ -991,10 +991,10 @@ trait ClientRequestTrait
 	/**
 	 * Deletes the bookmark for a given file.
 	 */
-	public function deleteBookmark($input)
+	public function deleteBookmark($input = null)
 	{
 		if($input instanceof DeleteBookmarkRequest === false)
-			$input = new DeleteBookmarkRequest($input);
+			$input = new DeleteBookmarkRequest($input ?? []);
 
 		return $input->execute($this)->getResults();
 	}
@@ -1007,10 +1007,10 @@ trait ClientRequestTrait
 	 * a user to move between different clients/apps while retaining the same play
 	 * queue (for instance when listening to an audio book).
 	 */
-	public function getPlayQueue($input)
+	public function getPlayQueue($input = null)
 	{
 		if($input instanceof GetPlayQueueRequest === false)
-			$input = new GetPlayQueueRequest($input);
+			$input = new GetPlayQueueRequest($input ?? []);
 
 		return $input->execute($this)->getResults();
 	}
@@ -1023,10 +1023,10 @@ trait ClientRequestTrait
 	 * clients/apps while retaining the same play queue (for instance when
 	 * listening to an audio book).
 	 */
-	public function savePlayQueue($input)
+	public function savePlayQueue($input = null)
 	{
 		if($input instanceof SavePlayQueueRequest === false)
-			$input = new SavePlayQueueRequest($input);
+			$input = new SavePlayQueueRequest($input ?? []);
 
 		return $input->execute($this)->getResults();
 	}
@@ -1036,10 +1036,10 @@ trait ClientRequestTrait
 	 * Returns the current status for media library scanning. Takes no extra
 	 * parameters.
 	 */
-	public function getScanStatus($input)
+	public function getScanStatus($input = null)
 	{
 		if($input instanceof GetScanStatusRequest === false)
-			$input = new GetScanStatusRequest($input);
+			$input = new GetScanStatusRequest($input ?? []);
 
 		return $input->execute($this)->getResults();
 	}
@@ -1048,10 +1048,10 @@ trait ClientRequestTrait
 	/**
 	 * Initiates a rescan of the media libraries. Takes no extra parameters.
 	 */
-	public function startScan($input)
+	public function startScan($input = null)
 	{
 		if($input instanceof StartScanRequest === false)
-			$input = new StartScanRequest($input);
+			$input = new StartScanRequest($input ?? []);
 
 		return $input->execute($this)->getResults();
 	}

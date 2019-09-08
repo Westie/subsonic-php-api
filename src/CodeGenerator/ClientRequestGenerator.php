@@ -5,6 +5,7 @@ namespace OUTRAGElib\Subsonic\CodeGenerator;
 
 use \Nette\PhpGenerator\ClassType;
 use \Nette\PhpGenerator\PhpFile;
+use \Nette\PhpGenerator\PhpLiteral;
 use \Nette\PhpGenerator\PhpNamespace;
 use \OUTRAGElib\Subsonic\CodeGenerator\Prototype\RequestMethod;
 
@@ -38,9 +39,9 @@ class ClientRequestGenerator
 			
 			$func = $class->addMethod($method->method);
 			$func->addComment(wordwrap($method->description));
-			$func->addParameter("input");
+			$func->addParameter("input", new PhpLiteral("null"));
 			$func->addBody('if($input instanceof '.$shortClassName.' === false)');
-			$func->addBody("\t".'$input = new '.$shortClassName.'($input);');
+			$func->addBody("\t".'$input = new '.$shortClassName.'($input ?? []);');
 			$func->addBody('');
 			$func->addBody('return $input->execute($this)->getResults();');
 		}
