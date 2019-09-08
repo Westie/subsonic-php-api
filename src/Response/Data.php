@@ -10,7 +10,7 @@ use OUTRAGElib\Subsonic\ResponseInterface;
 /**
  *	Response interface
  */
-class Json implements ResponseInterface
+class Data implements ResponseInterface
 {
 	/**
 	 *	Store items
@@ -29,14 +29,12 @@ class Json implements ResponseInterface
 	 */
 	public function __construct($response, $responseTarget)
 	{
-		$this->response = strval($response->getBody());
-		
-		$json = json_decode($this->response);
+		$this->response = $response;
 		
 		foreach($responseTarget as $responseTargetItem)
 		{
-			if(isset($json->{"subsonic-response"}->{$responseTargetItem}))
-				$this->results = $json->{"subsonic-response"}->{$responseTargetItem};
+			if(isset($this->response["subsonic-response"][$responseTargetItem]))
+				$this->results = $this->response["subsonic-response"][$responseTargetItem];
 		}
 		
 		return;
