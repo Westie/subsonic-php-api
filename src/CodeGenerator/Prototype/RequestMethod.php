@@ -102,7 +102,8 @@ class RequestMethod
 		
 		$target = strip_tags($target);
 		$target = trim($target);
-		$target = trim($target, "<>");
+		$target = html_entity_decode($target);
+		$target = str_replace([ "<", ">" ], "", $target);
 		
 		$this->responseTarget = $target;
 	}
@@ -118,7 +119,8 @@ class RequestMethod
 		
 		$target = strip_tags($target);
 		$target = trim($target);
-		$target = trim($target, "<>");
+		$target = html_entity_decode($target);
+		$target = str_replace([ "<", ">" ], "", $target);
 		
 		$this->responseErrorTarget = $target;
 	}

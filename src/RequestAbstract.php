@@ -9,4 +9,12 @@ namespace OUTRAGElib\Subsonic;
  */
 class RequestAbstract
 {
+	/**
+	 *	Constructor
+	 */
+	public function __construct($input = null)
+	{
+		if(is_array($input))
+			$this->fromArray($input);
+	}
 }

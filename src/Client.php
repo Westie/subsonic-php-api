@@ -4,6 +4,8 @@
 namespace OUTRAGElib\Subsonic;
 
 use \GuzzleHttp\Client as HttpClient;
+use \OUTRAGElib\Subsonic\Response\Binary as BinaryResponse;
+use \OUTRAGElib\Subsonic\Response\Json as JsonResponse;
 
 
 /**
@@ -38,7 +40,7 @@ class Client
 	/**
 	 *	Constructor
 	 */
-	public function __construct($server, $username, $password)
+	public final function __construct($server, $username, $password)
 	{
 		$this->server = $server;
 		$this->username = $username;
@@ -49,29 +51,32 @@ class Client
 	/**
 	 *	Execute request
 	 */
-	public function executeRequest($endpoint, array $arguments, $responseHandler = null)
+	public final function executeRequest($endpoint, array $arguments, $responseTarget = null): ResponseInterface
 	{
 		if(empty($this->httpClient))
 			$this->httpClient = $this->getHttpClient();
 		
-		$response = $this->httpClient->request("GET", $endpoint, [
+		$options = [
 			"query" => $this->getDefaultArguments() + $arguments
-		]);
+		];
 		
-		var_dump($response);
+		$response = $this->httpClient->request("GET", $endpoint, $options);
 		
-		echo $response->getBody();
-		exit;
+		$success = true;
 		
-		var_dump($this->httpClient, $endpoint, $arguments);
-		exit;
+		if($responseTarget === null)
+			return $success;
+		elseif(in_array("binary", $responseTarget))
+			return new BinaryResponse($response);
+		else
+			return new JsonResponse($response, $responseTarget);
 	}
 	
 	
 	/**
 	 *	Get HTTP client
 	 */
-	public function getHttpClient()
+	public final function getHttpClient()
 	{
 		$options = [
 			"base_uri" => $this->server,
@@ -84,7 +89,7 @@ class Client
 	/**
 	 *	Get default arguments
 	 */
-	protected function getDefaultArguments()
+	protected final function getDefaultArguments()
 	{
 		return [
 			"u" => $this->username,
@@ -94,4 +99,10 @@ class Client
 			"f" => "json",
 		];
 	}
+	
+	
+	/**
+	 *	Include the automatically generated list of shorthand methods
+	 */
+	use ClientRequestTrait;
 }

@@ -4,7 +4,7 @@ namespace OUTRAGElib\Subsonic\Request;
 
 use OUTRAGElib\Subsonic\Client as SubsonicClient;
 use OUTRAGElib\Subsonic\RequestAbstract;
-use OUTRAGElib\Subsonic\Response;
+use OUTRAGElib\Subsonic\ResponseInterface;
 
 /**
  * This class is automatically generated. All changes to this may (or will) be overwritten
@@ -46,8 +46,8 @@ class DeleteUser extends RequestAbstract
 	/**
 	 * Request information from API endpoint, using a Guzzle client
 	 */
-	public function execute(SubsonicClient $client): Response
+	public function execute(SubsonicClient $client): ResponseInterface
 	{
-		return $client->executeRequest("/rest/deleteUser", $this->toArray(), Response::class);
+		return $client->executeRequest("/rest/deleteUser", $this->toArray(), null);
 	}
 }

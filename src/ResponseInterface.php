@@ -5,8 +5,8 @@ namespace OUTRAGElib\Subsonic;
 
 
 /**
- *	Response class
+ *	Response interface
  */
-class Response
+interface ResponseInterface
 {
 }

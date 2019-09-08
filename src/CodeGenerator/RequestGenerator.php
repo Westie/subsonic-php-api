@@ -21,7 +21,7 @@ class RequestGenerator
 		$requestNamespace = 'OUTRAGElib\Subsonic\Request';
 		$clientClass = 'OUTRAGElib\Subsonic\Client';
 		$requestClass = ucfirst($method->method);
-		$responseClass = 'OUTRAGElib\Subsonic\Response';
+		$responseClass = 'OUTRAGElib\Subsonic\ResponseInterface';
 		
 		# create our class & namespace
 		$file = new PhpFile();
@@ -85,11 +85,16 @@ class RequestGenerator
 		$func->addBody('];');
 		
 		# create call to execute this particular API call
+		$responseTarget = $method->responseTarget;
+		
+		if(!is_null($responseTarget))
+			$responseTarget = explode("|", $responseTarget);
+		
 		$func = $class->addMethod("execute");
 		$func->addComment("Request information from API endpoint, using a Guzzle client");
 		$func->setReturnType($responseClass);
 		$func->addParameter("client")->setTypeHint($clientClass);
-		$func->setBody('return $client->executeRequest("'.$method->endpoint.'", $this->toArray(), Response::class);');
+		$func->setBody('return $client->executeRequest("'.$method->endpoint.'", $this->toArray(), '.json_encode($responseTarget).');');
 		
 		# output file
 		file_put_contents(implode(DIRECTORY_SEPARATOR, [ $root, $requestClass.".php" ]), (string) $file);
