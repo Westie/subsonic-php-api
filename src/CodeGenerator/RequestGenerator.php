@@ -21,7 +21,7 @@ class RequestGenerator
 		$requestNamespace = 'OUTRAGElib\Subsonic\Request';
 		$clientClass = 'OUTRAGElib\Subsonic\Client';
 		$requestClass = ucfirst($method->method);
-		$responseClass = 'OUTRAGElib\Subsonic\Response\\'.ucfirst($method->method);
+		$responseClass = 'OUTRAGElib\Subsonic\Response';
 		
 		# create our class & namespace
 		$file = new PhpFile();
@@ -29,7 +29,7 @@ class RequestGenerator
 		$namespace = $file->addNamespace($requestNamespace);
 		$namespace->addUse($clientClass, 'SubsonicClient');
 		$namespace->addUse($requestAbstractClass);
-		$namespace->addUse($responseClass, 'ResponseHandler');
+		$namespace->addUse($responseClass);
 		
 		$class = $namespace->addClass($requestClass);
 		$class->addComment("This class is automatically generated. All changes to this may (or will) be overwritten");
@@ -89,7 +89,7 @@ class RequestGenerator
 		$func->addComment("Request information from API endpoint, using a Guzzle client");
 		$func->setReturnType($responseClass);
 		$func->addParameter("client")->setTypeHint($clientClass);
-		$func->setBody('return $client->executeRequest("'.$method->endpoint.'", $this->toArray(), ResponseHandler::class);');
+		$func->setBody('return $client->executeRequest("'.$method->endpoint.'", $this->toArray(), Response::class);');
 		
 		# output file
 		file_put_contents(implode(DIRECTORY_SEPARATOR, [ $root, $requestClass.".php" ]), (string) $file);

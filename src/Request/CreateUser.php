@@ -4,7 +4,7 @@ namespace OUTRAGElib\Subsonic\Request;
 
 use OUTRAGElib\Subsonic\Client as SubsonicClient;
 use OUTRAGElib\Subsonic\RequestAbstract;
-use OUTRAGElib\Subsonic\Response\CreateUser as ResponseHandler;
+use OUTRAGElib\Subsonic\Response;
 
 /**
  * This class is automatically generated. All changes to this may (or will) be overwritten
@@ -223,8 +223,8 @@ class CreateUser extends RequestAbstract
 	/**
 	 * Request information from API endpoint, using a Guzzle client
 	 */
-	public function execute(SubsonicClient $client): ResponseHandler
+	public function execute(SubsonicClient $client): Response
 	{
-		return $client->executeRequest("/rest/createUser", $this->toArray(), ResponseHandler::class);
+		return $client->executeRequest("/rest/createUser", $this->toArray(), Response::class);
 	}
 }
