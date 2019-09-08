@@ -49,7 +49,7 @@ class Client
 	/**
 	 *	Execute request
 	 */
-	public function executeRequest($endpoint, $arguments)
+	public function executeRequest($endpoint, array $arguments, $responseHandler = null)
 	{
 		if(empty($this->httpClient))
 			$this->httpClient = $this->getHttpClient();
@@ -86,8 +86,6 @@ class Client
 	 */
 	protected function getDefaultArguments()
 	{
-		$salt = sha1(uniqid());
-		
 		return [
 			"u" => $this->username,
 			"p" => $this->password,

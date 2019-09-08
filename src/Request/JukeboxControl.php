@@ -4,7 +4,7 @@ namespace OUTRAGElib\Subsonic\Request;
 
 use OUTRAGElib\Subsonic\Client as SubsonicClient;
 use OUTRAGElib\Subsonic\RequestAbstract;
-use OUTRAGElib\Subsonic\Response\JukeboxControl as JukeboxControlResponse;
+use OUTRAGElib\Subsonic\Response\JukeboxControl as ResponseHandler;
 
 /**
  * This class is automatically generated. All changes to this may (or will) be overwritten
@@ -93,8 +93,8 @@ class JukeboxControl extends RequestAbstract
 	/**
 	 * Request information from API endpoint, using a Guzzle client
 	 */
-	public function execute(SubsonicClient $client)
+	public function execute(SubsonicClient $client): ResponseHandler
 	{
-		return $client->executeRequest("/rest/jukeboxControl", $this->toArray());
+		return $client->executeRequest("/rest/jukeboxControl", $this->toArray(), ResponseHandler::class);
 	}
 }

@@ -4,7 +4,7 @@ namespace OUTRAGElib\Subsonic\Request;
 
 use OUTRAGElib\Subsonic\Client as SubsonicClient;
 use OUTRAGElib\Subsonic\RequestAbstract;
-use OUTRAGElib\Subsonic\Response\GetPlaylist as GetPlaylistResponse;
+use OUTRAGElib\Subsonic\Response\GetPlaylist as ResponseHandler;
 
 /**
  * This class is automatically generated. All changes to this may (or will) be overwritten
@@ -46,8 +46,8 @@ class GetPlaylist extends RequestAbstract
 	/**
 	 * Request information from API endpoint, using a Guzzle client
 	 */
-	public function execute(SubsonicClient $client)
+	public function execute(SubsonicClient $client): ResponseHandler
 	{
-		return $client->executeRequest("/rest/getPlaylist", $this->toArray());
+		return $client->executeRequest("/rest/getPlaylist", $this->toArray(), ResponseHandler::class);
 	}
 }

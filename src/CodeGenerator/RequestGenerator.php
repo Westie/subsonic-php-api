@@ -29,7 +29,7 @@ class RequestGenerator
 		$namespace = $file->addNamespace($requestNamespace);
 		$namespace->addUse($clientClass, 'SubsonicClient');
 		$namespace->addUse($requestAbstractClass);
-		$namespace->addUse($responseClass, $requestClass.'Response');
+		$namespace->addUse($responseClass, 'ResponseHandler');
 		
 		$class = $namespace->addClass($requestClass);
 		$class->addComment("This class is automatically generated. All changes to this may (or will) be overwritten");
@@ -87,9 +87,9 @@ class RequestGenerator
 		# create call to execute this particular API call
 		$func = $class->addMethod("execute");
 		$func->addComment("Request information from API endpoint, using a Guzzle client");
-		#$func->setReturnType($responseClass);
+		$func->setReturnType($responseClass);
 		$func->addParameter("client")->setTypeHint($clientClass);
-		$func->setBody('return $client->executeRequest("'.$method->endpoint.'", $this->toArray());');
+		$func->setBody('return $client->executeRequest("'.$method->endpoint.'", $this->toArray(), ResponseHandler::class);');
 		
 		# output file
 		file_put_contents(implode(DIRECTORY_SEPARATOR, [ $root, $requestClass.".php" ]), (string) $file);

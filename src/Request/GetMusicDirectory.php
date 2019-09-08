@@ -4,7 +4,7 @@ namespace OUTRAGElib\Subsonic\Request;
 
 use OUTRAGElib\Subsonic\Client as SubsonicClient;
 use OUTRAGElib\Subsonic\RequestAbstract;
-use OUTRAGElib\Subsonic\Response\GetMusicDirectory as GetMusicDirectoryResponse;
+use OUTRAGElib\Subsonic\Response\GetMusicDirectory as ResponseHandler;
 
 /**
  * This class is automatically generated. All changes to this may (or will) be overwritten
@@ -48,8 +48,8 @@ class GetMusicDirectory extends RequestAbstract
 	/**
 	 * Request information from API endpoint, using a Guzzle client
 	 */
-	public function execute(SubsonicClient $client)
+	public function execute(SubsonicClient $client): ResponseHandler
 	{
-		return $client->executeRequest("/rest/getMusicDirectory", $this->toArray());
+		return $client->executeRequest("/rest/getMusicDirectory", $this->toArray(), ResponseHandler::class);
 	}
 }

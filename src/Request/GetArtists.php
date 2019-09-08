@@ -4,7 +4,7 @@ namespace OUTRAGElib\Subsonic\Request;
 
 use OUTRAGElib\Subsonic\Client as SubsonicClient;
 use OUTRAGElib\Subsonic\RequestAbstract;
-use OUTRAGElib\Subsonic\Response\GetArtists as GetArtistsResponse;
+use OUTRAGElib\Subsonic\Response\GetArtists as ResponseHandler;
 
 /**
  * This class is automatically generated. All changes to this may (or will) be overwritten
@@ -47,8 +47,8 @@ class GetArtists extends RequestAbstract
 	/**
 	 * Request information from API endpoint, using a Guzzle client
 	 */
-	public function execute(SubsonicClient $client)
+	public function execute(SubsonicClient $client): ResponseHandler
 	{
-		return $client->executeRequest("/rest/getArtists", $this->toArray());
+		return $client->executeRequest("/rest/getArtists", $this->toArray(), ResponseHandler::class);
 	}
 }

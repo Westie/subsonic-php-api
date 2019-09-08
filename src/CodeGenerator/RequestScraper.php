@@ -18,6 +18,13 @@ class RequestScraper
 	
 	
 	/**
+	 *	Overrides (because the documentation can be very, very silly)
+	 */
+	protected $responseTargetOverrides = [
+	];
+	
+	
+	/**
 	 *	Get methods
 	 */
 	public function getMethods()

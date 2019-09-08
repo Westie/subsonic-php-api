@@ -4,7 +4,7 @@ namespace OUTRAGElib\Subsonic\Request;
 
 use OUTRAGElib\Subsonic\Client as SubsonicClient;
 use OUTRAGElib\Subsonic\RequestAbstract;
-use OUTRAGElib\Subsonic\Response\DeletePlaylist as DeletePlaylistResponse;
+use OUTRAGElib\Subsonic\Response\DeletePlaylist as ResponseHandler;
 
 /**
  * This class is automatically generated. All changes to this may (or will) be overwritten
@@ -46,8 +46,8 @@ class DeletePlaylist extends RequestAbstract
 	/**
 	 * Request information from API endpoint, using a Guzzle client
 	 */
-	public function execute(SubsonicClient $client)
+	public function execute(SubsonicClient $client): ResponseHandler
 	{
-		return $client->executeRequest("/rest/deletePlaylist", $this->toArray());
+		return $client->executeRequest("/rest/deletePlaylist", $this->toArray(), ResponseHandler::class);
 	}
 }

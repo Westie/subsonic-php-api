@@ -25,6 +25,18 @@ class RequestMethod
 	
 	
 	/**
+	 *	Response target
+	 */
+	public $responseTarget = null;
+	
+	
+	/**
+	 *	Response target (if there is an error)
+	 */
+	public $responseErrorTarget = null;
+	
+	
+	/**
 	 *	Arguments
 	 */
 	public $arguments = [];

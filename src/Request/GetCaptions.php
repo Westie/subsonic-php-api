@@ -4,7 +4,7 @@ namespace OUTRAGElib\Subsonic\Request;
 
 use OUTRAGElib\Subsonic\Client as SubsonicClient;
 use OUTRAGElib\Subsonic\RequestAbstract;
-use OUTRAGElib\Subsonic\Response\GetCaptions as GetCaptionsResponse;
+use OUTRAGElib\Subsonic\Response\GetCaptions as ResponseHandler;
 
 /**
  * This class is automatically generated. All changes to this may (or will) be overwritten
@@ -57,8 +57,8 @@ class GetCaptions extends RequestAbstract
 	/**
 	 * Request information from API endpoint, using a Guzzle client
 	 */
-	public function execute(SubsonicClient $client)
+	public function execute(SubsonicClient $client): ResponseHandler
 	{
-		return $client->executeRequest("/rest/getCaptions", $this->toArray());
+		return $client->executeRequest("/rest/getCaptions", $this->toArray(), ResponseHandler::class);
 	}
 }
