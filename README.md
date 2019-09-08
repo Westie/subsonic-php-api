@@ -1,0 +1,1 @@
+Work in progress - this is an procedurally generated (when the author commands it!) API library for subsonic that is based on their official documentation.
