@@ -47,7 +47,9 @@ class RequestMethod
 	 */
 	public function setMethod($method)
 	{
-		$method = strval($method[0]->asXml() ?? null);
+		if(!is_string($method))
+			$method = strval($method[0]->asXml() ?? null);
+		
 		$method = strip_tags($method);
 		$method = trim($method);
 		
@@ -60,7 +62,9 @@ class RequestMethod
 	 */
 	public function setEndpoint($endpoint)
 	{
-		$endpoint = strval($endpoint[0]->asXml() ?? null);
+		if(!is_string($endpoint))
+			$endpoint = strval($endpoint[0]->asXml() ?? null);
+		
 		$endpoint = strip_tags($endpoint);
 		$endpoint = str_replace("http://your-server", "", $endpoint);
 		$endpoint = trim($endpoint);
@@ -74,7 +78,9 @@ class RequestMethod
 	 */
 	public function setDescription($description)
 	{
-		$description = strval($description[0]->asXml() ?? null);
+		if(!is_string($description))
+			$description = strval($description[0]->asXml() ?? null);
+		
 		$description = strip_tags($description);
 		$description = preg_replace('/&#13;/', '', $description);
 		$description = preg_replace('/\s+/', ' ', $description);
@@ -83,6 +89,38 @@ class RequestMethod
 		$description = trim($description);
 		
 		$this->description = $description;
+	}
+	
+	
+	/**
+	 *	Set response target
+	 */
+	public function setResponseTarget($target)
+	{
+		if(!is_string($target))
+			$target = strval($target[0]->asXml() ?? null);
+		
+		$target = strip_tags($target);
+		$target = trim($target);
+		$target = trim($target, "<>");
+		
+		$this->responseTarget = $target;
+	}
+	
+	
+	/**
+	 *	Set error response target
+	 */
+	public function setResponseErrorTarget($target)
+	{
+		if(!is_string($target))
+			$target = strval($target[0]->asXml() ?? null);
+		
+		$target = strip_tags($target);
+		$target = trim($target);
+		$target = trim($target, "<>");
+		
+		$this->responseErrorTarget = $target;
 	}
 	
 	
