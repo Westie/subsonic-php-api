@@ -1,15 +1,25 @@
 {
+	"name": "outragelib/subsonic-api",
+	"description": "A binding of Subsonic's API, written in PHP",
+	"type": "library",
+	"license": "MIT",
+	"authors": [
+		{
+			"name": "David Weston",
+			"email": "westie@typefish.co.uk"
+		}
+	],
 	"autoload": {
 		"psr-4": {
 			"OUTRAGElib\\Subsonic\\": "src/"
 		}
 	},
-    "require": {
-        "nette/php-generator": "^3.2",
-        "symfony/css-selector": "^4.3",
-        "guzzlehttp/guzzle": "~6.0",
+	"require": {
+		"nette/php-generator": "^3.2",
+		"symfony/css-selector": "^4.3",
+		"guzzlehttp/guzzle": "~6.0",
 		"filp/whoops": "^2.5",
 		"masterminds/html5": "^2.7",
 		"zendframework/zend-dom": "^2.7"
-    }
+	}
 }
